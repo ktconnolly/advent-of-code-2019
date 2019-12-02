@@ -35,7 +35,7 @@ def part_two():
 
     for noun in range(100):
         for verb in range(100):
-            program = list(original)
+            code = list(original)
 
-            if run_intcode(program, noun, verb) == 19690720:
+            if run_intcode(code, noun, verb) == 19690720:
                 return 100 * noun + verb
