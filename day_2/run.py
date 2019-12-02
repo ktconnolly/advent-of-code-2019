@@ -8,7 +8,7 @@ def run_intcode(code, noun, verb):
     code[2] = verb
 
     i = 0
-    while i < len(code):
+    while code[i] != 99:
         p1 = code[i + 1]
         p2 = code[i + 2]
         p3 = code[i + 3]
@@ -17,8 +17,8 @@ def run_intcode(code, noun, verb):
             code[p3] = code[p1] + code[p2]
         elif code[i] == 2:
             code[p3] = code[p1] * code[p2]
-        elif code[i] == 99:
-            break
+        else:
+            raise Exception("Invalid opcode")
 
         i += 4
 
@@ -26,8 +26,8 @@ def run_intcode(code, noun, verb):
 
 
 def part_one():
-    program = read_ints("input.txt")
-    return run_intcode(program, noun=12, verb=2)
+    code = read_ints("input.txt")
+    return run_intcode(code, noun=12, verb=2)
 
 
 def part_two():
