@@ -3,9 +3,11 @@ def read_ints(file):
         return [int(i) for i in f.readline().split(",")]
 
 
-def run_intcode(code):
-    i = 0
+def run_intcode(code, noun, verb):
+    code[1] = noun
+    code[2] = verb
 
+    i = 0
     while i < len(code):
         p1 = code[i + 1]
         p2 = code[i + 2]
@@ -25,9 +27,7 @@ def run_intcode(code):
 
 def part_one():
     program = read_ints("input.txt")
-    program[1] = 12
-    program[2] = 2
-    return run_intcode(program)
+    return run_intcode(program, noun=12, verb=2)
 
 
 def part_two():
@@ -36,8 +36,6 @@ def part_two():
     for noun in range(100):
         for verb in range(100):
             program = list(original)
-            program[1] = noun
-            program[2] = verb
 
-            if run_intcode(program) == 19690720:
+            if run_intcode(program, noun, verb) == 19690720:
                 return 100 * noun + verb
