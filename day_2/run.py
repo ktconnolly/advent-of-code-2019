@@ -18,7 +18,7 @@ def run_intcode(code, noun, verb):
         elif code[i] == 2:
             code[p3] = code[p1] * code[p2]
         else:
-            raise Exception("Invalid opcode")
+            raise Exception(f"Invalid opcode: {code[i]} at index {i}")
 
         i += 4
 
