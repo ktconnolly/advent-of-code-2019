@@ -40,4 +40,4 @@ def part_one():
 
 
 def part_two():
-    return min(points1[k] + points2[k] for k in points1.keys() & points2.keys())
+    return min(points1[p] + points2[p] for p in points1.keys() & points2.keys())
