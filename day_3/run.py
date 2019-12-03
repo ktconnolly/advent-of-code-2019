@@ -10,17 +10,18 @@ def make_move(position, direction):
 
 def get_points(wire):
     position = (0, 0)
+    visited = {}
     steps = 0
-    points = {}
+
     for i in wire:
         for _ in range(int(i[1:])):
             steps += 1
             position = make_move(position, direction=i[0])
 
-            if position not in points:
-                points[position] = steps
+            if position not in visited:
+                visited[position] = steps
 
-    return points
+    return visited
 
 
 w1, w2 = read("input.txt")
