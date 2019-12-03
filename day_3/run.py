@@ -28,10 +28,12 @@ w1, w2 = read("input.txt")
 points1 = get_points(w1)
 points2 = get_points(w2)
 
+intersects = points1.keys() & points2.keys()
+
 
 def part_one():
-    return min(abs(p1) + abs(p2) for p1, p2 in points1.keys() & points2.keys())
+    return min(abs(p1) + abs(p2) for p1, p2 in intersects)
 
 
 def part_two():
-    return min(points1[p] + points2[p] for p in points1.keys() & points2.keys())
+    return min(points1[p] + points2[p] for p in intersects)
