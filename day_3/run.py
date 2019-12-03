@@ -25,10 +25,10 @@ def get_points(wire):
 
 w1, w2 = read("input.txt")
 
-steps1 = get_points(w1)
-steps2 = get_points(w2)
+points1 = get_points(w1)
+points2 = get_points(w2)
 
-intersects = steps1.keys() & steps2.keys()
+intersects = points1.keys() & points2.keys()
 
 
 def part_one():
@@ -36,4 +36,4 @@ def part_one():
 
 
 def part_two():
-    return min(steps1[p] + steps2[p] for p in intersects)
+    return min(points1[p] + points2[p] for p in intersects)
