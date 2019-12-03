@@ -8,7 +8,7 @@ class TestDay2(unittest.TestCase):
         self.assertEqual(1626, run.part_one())
 
     def test_part_two(self):
-        pass
+        self.assertEqual(27330, run.part_two())
 
 
 if __name__ == '__main__':
