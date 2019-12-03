@@ -4,41 +4,29 @@ def read(file):
 
 
 def make_move(position, direction):
-    row, col = position
+    moves = {
+        "U": (1, 0),
+        "D": (-1, 0),
+        "R": (0, 1),
+        "L": (0, -1)
+    }
 
-    if direction == "U":
-        return row + 1, col
-    elif direction == "D":
-        return row - 1, col
-    elif direction == "R":
-        return row, col + 1
-    elif direction == "L":
-        return row, col - 1
-    else:
-        raise Exception(f"Invalid direction: {direction}")
+    return tuple(map(sum, zip(position, moves.get(direction))))
 
 
 def get_points(wire):
     position = (0, 0)
-    points = set()
+    steps = 0
+    points = {}
     for i in wire:
         for _ in range(int(i[1:])):
-            position = make_move(position, direction=i[0])
-            points.add(position)
+            steps += 1
+            position = make_move(position, i[0])
+
+            if position not in points:
+                points[position] = steps
 
     return points
-
-
-def get_steps(wire, target):
-    position = (0, 0)
-    steps = 0
-    for i in wire:
-        for _ in range(int(i[1:])):
-            if position == target:
-                return steps
-
-            position = make_move(position, direction=i[0])
-            steps += 1
 
 
 w1, w2 = read("input.txt")
@@ -48,11 +36,8 @@ points2 = get_points(w2)
 
 
 def part_one():
-    return min(abs(p1) + abs(p2) for p1, p2 in points1.intersection(points2))
+    return min(abs(p1) + abs(p2) for p1, p2 in points1.keys() & points2.keys())
 
 
 def part_two():
-    return min(
-        get_steps(w1, p) + get_steps(w2, p)
-        for p in points1.intersection(points2)
-    )
+    return min(points1[k] + points2[k] for k in points1.keys() & points2.keys())
