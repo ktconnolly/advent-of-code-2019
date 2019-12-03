@@ -4,12 +4,7 @@ def read(file):
 
 
 def make_move(position, direction):
-    moves = {
-        "U": (1, 0),
-        "D": (-1, 0),
-        "R": (0, 1),
-        "L": (0, -1)
-    }
+    moves = {"U": (1, 0), "D": (-1, 0), "R": (0, 1), "L": (0, -1)}
     return tuple(map(sum, zip(position, moves.get(direction))))
 
 
