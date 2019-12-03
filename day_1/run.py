@@ -1,4 +1,4 @@
-def read_ints(file):
+def read(file):
     with open(file, "r") as f:
         return [int(line.strip()) for line in f.readlines()]
 
@@ -17,8 +17,8 @@ def get_total_fuel(mass):
 
 
 def part_one():
-    return sum(get_fuel(mass) for mass in read_ints("input.txt"))
+    return sum(get_fuel(mass) for mass in read("input.txt"))
 
 
 def part_two():
-    return sum(get_total_fuel(mass)for mass in read_ints("input.txt"))
+    return sum(get_total_fuel(mass) for mass in read("input.txt"))

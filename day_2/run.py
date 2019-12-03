@@ -1,4 +1,4 @@
-def read_ints(file):
+def read(file):
     with open(file, "r") as f:
         return [int(i) for i in f.readline().split(",")]
 
@@ -24,12 +24,12 @@ def run_intcode(code, noun, verb):
 
 
 def part_one():
-    code = read_ints("input.txt")
+    code = read("input.txt")
     return run_intcode(code, noun=12, verb=2)
 
 
 def part_two():
-    original = read_ints("input.txt")
+    original = read("input.txt")
 
     for noun in range(100):
         for verb in range(100):
