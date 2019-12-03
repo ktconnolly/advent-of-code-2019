@@ -20,7 +20,7 @@ def get_points(wire):
     for i in wire:
         for _ in range(int(i[1:])):
             steps += 1
-            position = make_move(position, i[0])
+            position = make_move(position, direction=i[0])
 
             if position not in points:
                 points[position] = steps
