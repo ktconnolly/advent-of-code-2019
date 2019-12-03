@@ -10,7 +10,6 @@ def make_move(position, direction):
         "R": (0, 1),
         "L": (0, -1)
     }
-
     return tuple(map(sum, zip(position, moves.get(direction))))
 
 
