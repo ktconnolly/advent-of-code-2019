@@ -23,6 +23,6 @@ def part_one():
 
 def part_two():
     return sum(
-        1 if is_ascending(p) and 2 in (get_consecutive_counts(p)) else 0
+        1 if is_ascending(p) and 2 in get_consecutive_counts(p) else 0
         for p in get_passwords()
     )
