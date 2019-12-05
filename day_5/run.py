@@ -56,8 +56,8 @@ def run_intcode(code, user_input):
 
 
 def part_one():
-    return run_intcode(read("input.txt"), 1)
+    return run_intcode(read("input.txt"), user_input=1)
 
 
 def part_two():
-    return run_intcode(read("input.txt"), 5)
+    return run_intcode(read("input.txt"), user_input=5)
