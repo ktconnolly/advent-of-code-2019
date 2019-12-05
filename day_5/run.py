@@ -69,4 +69,4 @@ def part_one():
 
 
 def part_two():
-    pass  # input 5 gives 3output of 508186
+    pass  # input 5 gives output of 508186
