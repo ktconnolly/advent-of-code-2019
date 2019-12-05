@@ -3,7 +3,9 @@ def read(file):
         return [int(i) for i in f.readline().split(",")]
 
 
-def run_intcode(code):
+def run_intcode(code, user_input):
+    outputs = []
+
     i = 0
     while code[i] != 99:
         op = code[i] % 100
@@ -22,10 +24,10 @@ def run_intcode(code):
             code[p3] = code[p1] * code[p2]
             i += 4
         elif op == 3:
-            code[p1] = int(input("input: "))
+            code[p1] = user_input
             i += 2
         elif op == 4:
-            print(code[p1])
+            outputs.append(code[p1])
             i += 2
         elif op == 5:
             if code[p1] != 0:
@@ -50,10 +52,12 @@ def run_intcode(code):
                 code[p3] = 0
             i += 4
 
+    return outputs[-1]
+
 
 def part_one():
-    pass  # input 1 gives output of 12234644
+    return run_intcode(read("input.txt"), 1)
 
 
 def part_two():
-    pass  # input 5 gives output of 3508186
+    return run_intcode(read("input.txt"), 5)
