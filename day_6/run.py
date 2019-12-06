@@ -4,13 +4,12 @@ def read(file):
 
 
 def get_parents(child, orbits):
-    parents = []
     p = orbits.get(child)
-    while p:
-        parents.append(p)
-        p = orbits.get(p)
 
-    return parents
+    if not p:
+        return []
+
+    return [p] + get_parents(p, orbits)
 
 
 def part_one():
