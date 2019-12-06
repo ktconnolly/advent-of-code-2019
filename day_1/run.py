@@ -1,6 +1,6 @@
 def read(file):
     with open(file, "r") as f:
-        return [int(line.strip()) for line in f.readlines()]
+        return [int(l.strip()) for l in f]
 
 
 def get_fuel(mass):
