@@ -14,7 +14,7 @@ def get_parents(child, orbits):
 
 def part_one():
     orbits = {c: p for p, c in read("input.txt")}
-    return sum(len((get_parents(obj, orbits))) for obj in orbits.keys())
+    return sum(len(get_parents(obj, orbits)) for obj in orbits.keys())
 
 
 def part_two():
