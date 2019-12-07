@@ -21,23 +21,28 @@ class Program:
         m3 = (self.code[self.i] // 10000) % 10
         return m1, m2, m3
 
+    def get_parameters(self, op):
+        m1, m2, m3 = self.get_modes()
+        p1, p2, p3 = None, None, None
+
+        if op in (1, 2, 7, 8):
+            p1 = self.i + 1 if m1 == 1 else self.code[self.i + 1]
+            p2 = self.i + 2 if m2 == 1 else self.code[self.i + 2]
+            p3 = self.i + 3 if m3 == 1 else self.code[self.i + 3]
+        elif op in (3, 4):
+            p1 = self.i + 1 if m1 == 1 else self.code[self.i + 1]
+        elif op in (5, 6):
+            p1 = self.i + 1 if m1 == 1 else self.code[self.i + 1]
+            p2 = self.i + 2 if m2 == 1 else self.code[self.i + 2]
+
+        return p1, p2, p3
+
     def run(self, inputs):
         self.inputs += inputs
 
         while self.i < len(self.code):
             op = self.get_opcode()
-            m1, m2, m3 = self.get_modes()
-            p1, p2, p3 = None, None, None
-
-            if op in (1, 2, 7, 8):
-                p1 = self.i + 1 if m1 == 1 else self.code[self.i + 1]
-                p2 = self.i + 2 if m2 == 1 else self.code[self.i + 2]
-                p3 = self.i + 3 if m3 == 1 else self.code[self.i + 3]
-            elif op in (3, 4):
-                p1 = self.i + 1 if m1 == 1 else self.code[self.i + 1]
-            elif op in (5, 6):
-                p1 = self.i + 1 if m1 == 1 else self.code[self.i + 1]
-                p2 = self.i + 2 if m2 == 1 else self.code[self.i + 2]
+            p1, p2, p3 = self.get_parameters(op)
 
             if op == 1:
                 self.code[p3] = self.code[p1] + self.code[p2]
