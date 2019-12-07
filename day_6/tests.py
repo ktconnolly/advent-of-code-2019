@@ -3,7 +3,7 @@ import unittest
 from day_6 import run
 
 
-class TestDay4(unittest.TestCase):
+class TestDay6(unittest.TestCase):
     def test_part_one(self):
         self.assertEqual(145250, run.part_one())
 
