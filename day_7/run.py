@@ -98,13 +98,9 @@ def part_two():
         amps = [Program(code, setting) for setting in settings]
 
         output = 0
-        while True:
+        while output is not None:
+            outputs.append(output)
             for amp in amps:
                 output = amp.run([output])
-
-            if output:
-                outputs.append(output)
-            else:
-                break
 
     return max(outputs)
