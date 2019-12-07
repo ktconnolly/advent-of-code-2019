@@ -3,7 +3,7 @@ from collections import Counter
 
 def get_passwords():
     for p in range(382345, 843167):
-        return str(p)
+        yield str(p)
 
 
 def is_ascending(p):
