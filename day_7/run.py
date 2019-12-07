@@ -27,10 +27,6 @@ class Program:
         while self.i < len(self.code):
             op = self.get_opcode()
             m1, m2, m3 = self.get_modes()
-
-            if op == 99:
-                break
-
             p1, p2, p3 = None, None, None
 
             if op in (1, 2, 7, 8):
@@ -46,32 +42,28 @@ class Program:
             if op == 1:
                 self.code[p3] = self.code[p1] + self.code[p2]
                 self.i += 4
-
             elif op == 2:
                 self.code[p3] = self.code[p1] * self.code[p2]
                 self.i += 4
-
             elif op == 3:
                 self.code[p1] = self.inputs.pop(0)
                 self.i += 2
-
             elif op == 4:
                 self.i += 2
                 return self.code[p1]
-
             elif op == 5:
                 self.i = self.code[p2] if self.code[p1] != 0 else self.i + 3
-
             elif op == 6:
                 self.i = self.code[p2] if self.code[p1] == 0 else self.i + 3
-
             elif op == 7:
                 self.code[p3] = int(self.code[p1] < self.code[p2])
                 self.i += 4
-
             elif op == 8:
                 self.code[p3] = int(self.code[p1] == self.code[p2])
                 self.i += 4
+            else:
+                assert op == 99
+                break
 
 
 def part_one():
