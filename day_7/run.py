@@ -60,31 +60,17 @@ class Program:
                 return self.code[p1]
 
             elif op == 5:
-                if self.code[p1] != 0:
-                    self.i = self.code[p2]
-                else:
-                    self.i += 3
+                self.i = self.code[p2] if self.code[p1] != 0 else self.i + 3
 
             elif op == 6:
-                if self.code[p1] == 0:
-                    self.i = self.code[p2]
-                else:
-                    self.i += 3
+                self.i = self.code[p2] if self.code[p1] == 0 else self.i + 3
 
             elif op == 7:
-                if self.code[p1] < self.code[p2]:
-                    self.code[p3] = 1
-                else:
-                    self.code[p3] = 0
-
+                self.code[p3] = int(self.code[p1] < self.code[p2])
                 self.i += 4
 
             elif op == 8:
-                if self.code[p1] == self.code[p2]:
-                    self.code[p3] = 1
-                else:
-                    self.code[p3] = 0
-
+                self.code[p3] = int(self.code[p1] == self.code[p2])
                 self.i += 4
 
 

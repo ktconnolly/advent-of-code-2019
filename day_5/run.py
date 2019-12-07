@@ -33,26 +33,14 @@ def run_intcode(code, user_input):
             outputs.append(code[p1])
             i += 2
         elif op == 5:
-            if code[p1] != 0:
-                i = code[p2]
-            else:
-                i += 3
+            i = code[p2] if code[p1] != 0 else i + 3
         elif op == 6:
-            if code[p1] == 0:
-                i = code[p2]
-            else:
-                i += 3
+            i = code[p2] if code[p1] == 0 else i + 3
         elif op == 7:
-            if code[p1] < code[p2]:
-                code[p3] = 1
-            else:
-                code[p3] = 0
+            code[p3] = int(code[p1] < code[p2])
             i += 4
         elif op == 8:
-            if code[p1] == code[p2]:
-                code[p3] = 1
-            else:
-                code[p3] = 0
+            code[p3] = int(code[p1] == code[p2])
             i += 4
 
     return outputs[-1]
