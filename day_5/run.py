@@ -7,11 +7,14 @@ def run_intcode(code, user_input):
     outputs = []
 
     i = 0
-    while code[i] != 99:
+    while i < len(code):
         op = code[i] % 100
         m1 = (code[i] // 100) % 10
         m2 = (code[i] // 1000) % 10
         m3 = (code[i] // 10000) % 10
+
+        if op == 99:
+            break
 
         p1 = i + 1 if m1 == 1 else code[i + 1]
         p2 = i + 2 if m2 == 1 else code[i + 2]
