@@ -7,8 +7,9 @@ def read(file):
 
 
 class Program:
-    def __init__(self, code):
+    def __init__(self, code, setting):
         self.code = code.copy()
+        self.inputs = [setting]
         self.i = 0
 
     def get_opcode(self):
@@ -21,6 +22,8 @@ class Program:
         return m1, m2, m3
 
     def run(self, inputs):
+        self.inputs += inputs
+
         while self.i < len(self.code):
             op = self.get_opcode()
             m1, m2, m3 = self.get_modes()
@@ -49,7 +52,7 @@ class Program:
                 self.i += 4
 
             elif op == 3:
-                self.code[p1] = inputs.pop(0)
+                self.code[p1] = self.inputs.pop(0)
                 self.i += 2
 
             elif op == 4:
@@ -90,11 +93,11 @@ def part_one():
     outputs = []
 
     for settings in permutations(range(5)):
-        amps = [Program(code) for _ in range(5)]
+        amps = [Program(code, setting) for setting in settings]
 
         output = 0
-        for amp, setting in zip(amps, settings):
-            output = amp.run(inputs=[setting, output])
+        for amp in amps:
+            output = amp.run(inputs=[output])
 
         outputs.append(output)
 
@@ -106,12 +109,9 @@ def part_two():
     outputs = []
 
     for settings in permutations(range(5, 10)):
-        amps = [Program(code) for _ in range(5)]
+        amps = [Program(code, setting) for setting in settings]
 
         output = 0
-        for amp, setting in zip(amps, settings):
-            output = amp.run(inputs=[setting, output])
-
         while True:
             for amp in amps:
                 output = amp.run([output])
