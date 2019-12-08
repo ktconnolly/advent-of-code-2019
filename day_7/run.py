@@ -15,27 +15,17 @@ class Program:
     def get_opcode(self):
         return self.code[self.i] % 100
 
-    def get_modes(self):
-        m1 = (self.code[self.i] // 100) % 10
-        m2 = (self.code[self.i] // 1000) % 10
-        m3 = (self.code[self.i] // 10000) % 10
-        return m1, m2, m3
+    def get_param(self, n):
+        if self.i + n > len(self.code) - 1:
+            return None
 
-    def get_parameters(self, op):
-        m1, m2, m3 = self.get_modes()
-        p1, p2, p3 = None, None, None
+        if self.get_mode(n) == 1:
+            return self.i + n
+        else:
+            return self.code[self.i + n]
 
-        if op in (1, 2, 7, 8):
-            p1 = self.i + 1 if m1 == 1 else self.code[self.i + 1]
-            p2 = self.i + 2 if m2 == 1 else self.code[self.i + 2]
-            p3 = self.i + 3 if m3 == 1 else self.code[self.i + 3]
-        elif op in (3, 4):
-            p1 = self.i + 1 if m1 == 1 else self.code[self.i + 1]
-        elif op in (5, 6):
-            p1 = self.i + 1 if m1 == 1 else self.code[self.i + 1]
-            p2 = self.i + 2 if m2 == 1 else self.code[self.i + 2]
-
-        return p1, p2, p3
+    def get_mode(self, n):
+        return self.code[self.i] // (10 ** (1 + n)) % 10
 
     def run(self, inputs):
         self.inputs += inputs
@@ -46,7 +36,7 @@ class Program:
             if op == 99:
                 break
 
-            p1, p2, p3 = self.get_parameters(op)
+            p1, p2, p3 = [self.get_param(p) for p in range(1, 4)]
 
             if op == 1:
                 self.code[p3] = self.code[p1] + self.code[p2]
@@ -104,6 +94,3 @@ def part_two():
                 output = amp.run([output])
 
     return max(outputs)
-
-
-part_two()
