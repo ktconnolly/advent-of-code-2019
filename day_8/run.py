@@ -26,8 +26,8 @@ def part_one():
 def part_two():
     layers = ["" for _ in range(WIDTH * HEIGHT)]
     for chunk in chunks(read("input.txt"), WIDTH * HEIGHT):
-        for i, c in enumerate(chunk):
-            layers[i] += c
+        for i, colour in enumerate(chunk):
+            layers[i] += colour
 
     colours = [row.lstrip("2")[:1] or "2" for row in layers]
 
