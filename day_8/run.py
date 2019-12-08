@@ -12,6 +12,10 @@ def chunks(lst, n):
         yield lst[i: i + n]
 
 
+def get_colour(pixels):
+    return "".join(pixels).lstrip("2")[:1] or "2"
+
+
 def part_one():
     layers = [c for c in chunks(read("input.txt"), WIDTH * HEIGHT)]
     zero_counts = [layer.count("0") for layer in layers]
@@ -21,8 +25,8 @@ def part_one():
 
 def part_two():
     layers = [c for c in chunks(read("input.txt"), WIDTH * HEIGHT)]
-    colours = ["".join(row).lstrip("2")[:1] or "2" for row in zip(*layers)]
+    colours = [get_colour(pixels) for pixels in zip(*layers)]
     return [
-        "".join(["*" if c == "1" else " " for c in row])
+        "".join("*" if c == "1" else " " for c in row)
         for row in chunks(colours, WIDTH)
     ]
