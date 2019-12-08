@@ -26,30 +26,22 @@ def part_one():
 def part_two():
     image = read("input.txt")
 
-    rows = [[] for _ in range(150)]
+    rows = ["" for _ in range(150)]
     while image:
-        for i, row in enumerate(image[:150]):
-            rows[i].append(row)
+        for i, c in enumerate(image[:150]):
+            rows[i] += c
 
         image = image[150:]
 
-    colours = []
-    for row in rows:
-        colour = None
-        for c in row:
-            if c == '0':
-                colour = 0
-                break
-            elif c == '1':
-                colour = 1
-                break
-            else:
-                colour = 2
+    colours = [row.lstrip("2")[:1] or "2" for row in rows]
 
-        colours.append(colour)
-
-    image = "".join([str(i) for i in colours])
+    image = colours
+    final_image = []
 
     while image:
-        print("".join([c if c == "1" else " " for c in image[:25]]))
+        row = ["*" if c == "1" else " " for c in image[:25]]
+        final_image.append("".join(row))
         image = image[25:]
+
+    return final_image
+
