@@ -27,6 +27,6 @@ def part_two():
     layers = [c for c in chunks(read("input.txt"), WIDTH * HEIGHT)]
     colours = [get_colour(pixels) for pixels in zip(*layers)]
     return [
-        "".join("#" if c == "1" else " " for c in row)
+        "".join("#" if p == "1" else " " for p in row)
         for row in chunks(colours, WIDTH)
     ]
