@@ -42,6 +42,10 @@ class Program:
 
         while self.i < len(self.code):
             op = self.get_opcode()
+
+            if op == 99:
+                break
+
             p1, p2, p3 = self.get_parameters(op)
 
             if op == 1:
@@ -66,8 +70,6 @@ class Program:
             elif op == 8:
                 self.code[p3] = int(self.code[p1] == self.code[p2])
                 self.i += 4
-            elif op == 99:
-                break
             else:
                 raise Exception("Invalid opcode")
 
@@ -102,3 +104,6 @@ def part_two():
                 output = amp.run([output])
 
     return max(outputs)
+
+
+part_two()
