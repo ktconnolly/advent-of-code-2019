@@ -11,5 +11,5 @@ class TestDay2(unittest.TestCase):
         self.assertEqual(5398, run.part_two())
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

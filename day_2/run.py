@@ -9,7 +9,7 @@ def run_intcode(code, noun, verb):
 
     i = 0
     while code[i] != 99:
-        p1, p2, p3 = code[i + 1: i + 4]
+        p1, p2, p3 = code[i + 1 : i + 4]
 
         if code[i] == 1:
             code[p3] = code[p1] + code[p2]

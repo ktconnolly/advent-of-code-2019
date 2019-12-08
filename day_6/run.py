@@ -1,6 +1,6 @@
 def read(file):
     with open(file, "r") as f:
-        return [l.strip().split(')') for l in f]
+        return [l.strip().split(")") for l in f]
 
 
 def get_parents(child, orbits):
