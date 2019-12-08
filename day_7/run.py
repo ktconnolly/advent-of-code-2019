@@ -66,9 +66,10 @@ class Program:
             elif op == 8:
                 self.code[p3] = int(self.code[p1] == self.code[p2])
                 self.i += 4
-            else:
-                assert op == 99
+            elif op == 99:
                 break
+            else:
+                raise Exception("Invalid opcode")
 
 
 def part_one():
