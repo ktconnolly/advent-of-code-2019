@@ -18,8 +18,14 @@ def get_colour(pixels):
 
 def part_one():
     layers = [c for c in chunks(read("input.txt"), WIDTH * HEIGHT)]
-    zero_counts = [layer.count("0") for layer in layers]
-    min_layer = layers[zero_counts.index(min(zero_counts))]
+    min_layer = None
+    min_zeros = WIDTH * HEIGHT
+    for layer in layers:
+        zeroes = layer.count("0")
+        if zeroes < min_zeros:
+            min_layer = layer
+            min_zeros = zeroes
+
     return min_layer.count("1") * min_layer.count("2")
 
 
