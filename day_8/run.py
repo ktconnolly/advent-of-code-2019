@@ -4,7 +4,7 @@ HEIGHT = 6
 
 def read(file):
     with open(file, "r") as f:
-        return f.readline()
+        return [c for c in chunks(f.readline(), WIDTH * HEIGHT)]
 
 
 def chunks(lst, n):
@@ -17,7 +17,7 @@ def get_colour(pixels):
 
 
 def part_one():
-    layers = [c for c in chunks(read("input.txt"), WIDTH * HEIGHT)]
+    layers = read("input.txt")
     min_layer = None
     min_zeros = WIDTH * HEIGHT
     for layer in layers:
@@ -30,7 +30,7 @@ def part_one():
 
 
 def part_two():
-    layers = [c for c in chunks(read("input.txt"), WIDTH * HEIGHT)]
+    layers = read("input.txt")
     colours = [get_colour(pixels) for pixels in zip(*layers)]
     return [
         "".join("#" if p == "1" else " " for p in row)
