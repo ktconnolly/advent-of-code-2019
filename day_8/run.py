@@ -13,8 +13,8 @@ def chunks(lst, n):
 
 
 def part_one():
-    layers = [c for c in chunks(read("input.txt"), WIDTH)]
-    layers = [c for c in chunks(layers, HEIGHT)]
+    rows = [c for c in chunks(read("input.txt"), WIDTH)]
+    layers = [c for c in chunks(rows, HEIGHT)]
 
     zero_counts = ["".join(layer).count("0") for layer in layers]
     min_index = zero_counts.index(min(zero_counts))
