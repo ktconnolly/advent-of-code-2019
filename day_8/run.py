@@ -1,46 +1,43 @@
+WIDTH = 25
+HEIGHT = 6
+
+
 def read(file):
     with open(file, "r") as f:
         return f.readline()
 
 
-def part_one():
-    image = read("input.txt")
+def chunks(lst, n):
+    for i in range(0, len(lst), n):
+        yield lst[i: i + n]
 
+
+def part_one():
     layers = []
     layer = []
-    while image:
-        layer.append(image[:25])
-        image = image[25:]
+    for chunk in chunks(read("input.txt"), WIDTH):
+        layer.append(chunk)
 
-        if len(layer) == 6:
+        if len(layer) == HEIGHT:
             layers.append(layer)
             layer = []
 
-    counts = ["".join(layer).count("0") for layer in layers]
-    min_index = counts.index(min(counts))
-    layer = "".join(layers[min_index])
+    zero_counts = ["".join(layer).count("0") for layer in layers]
+    min_index = zero_counts.index(min(zero_counts))
+    min_layer = "".join(layers[min_index])
 
-    return layer.count("1") * layer.count("2")
+    return min_layer.count("1") * min_layer.count("2")
 
 
 def part_two():
-    image = read("input.txt")
+    layers = ["" for _ in range(WIDTH * HEIGHT)]
+    for chunk in chunks(read("input.txt"), WIDTH * HEIGHT):
+        for i, c in enumerate(chunk):
+            layers[i] += c
 
-    rows = ["" for _ in range(150)]
-    while image:
-        for i, c in enumerate(image[:150]):
-            rows[i] += c
+    colours = [row.lstrip("2")[:1] or "2" for row in layers]
 
-        image = image[150:]
-
-    colours = [row.lstrip("2")[:1] or "2" for row in rows]
-
-    image = colours
-    final_image = []
-
-    while image:
-        row = ["*" if c == "1" else " " for c in image[:25]]
-        final_image.append("".join(row))
-        image = image[25:]
-
-    return final_image
+    return [
+        "".join(["*" if c == "1" else " " for c in row])
+        for row in chunks(colours, WIDTH)
+    ]
