@@ -44,4 +44,3 @@ def part_two():
         image = image[25:]
 
     return final_image
-
