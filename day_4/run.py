@@ -16,13 +16,13 @@ def consecutive_counts(p):
 
 def part_one():
     return sum(
-        1 if is_ascending(str(p)) and max(consecutive_counts(p)) > 1 else 0
+        is_ascending(p) and max(consecutive_counts(p)) > 1
         for p in get_passwords()
     )
 
 
 def part_two():
     return sum(
-        1 if is_ascending(p) and 2 in consecutive_counts(p) else 0
+        is_ascending(p) and 2 in consecutive_counts(p)
         for p in get_passwords()
     )
