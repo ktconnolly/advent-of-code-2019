@@ -6,8 +6,8 @@ def read(file):
 class Computer:
     def __init__(self, code):
         self.code = code.copy()
-        self.relative_base = 0
         self.ptr = 0
+        self.relative_base = 0
 
     def get_opcode(self):
         return self.code[self.ptr] % 100
