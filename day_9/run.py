@@ -36,6 +36,8 @@ class Computer:
             self.write(index, val)
         elif mode == 2:
             self.write(index + self.relative_base, val)
+        else:
+            raise Exception("Invalid mode")
 
     def write(self, index, val):
         if index > len(self.code) - 1:
