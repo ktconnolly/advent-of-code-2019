@@ -1,3 +1,6 @@
+from intcode import Computer
+
+
 def read(file):
     with open(file, "r") as f:
         return [int(i) for i in f.readline().split(",")]
@@ -9,14 +12,12 @@ def run_intcode(code, noun, verb):
 
     i = 0
     while code[i] != 99:
-        p1, p2, p3 = code[i + 1 : i + 4]
+        p1, p2, p3 = code[i + 1: i + 4]
 
         if code[i] == 1:
             code[p3] = code[p1] + code[p2]
         elif code[i] == 2:
             code[p3] = code[p1] * code[p2]
-        else:
-            raise Exception(f"Invalid opcode: {code[i]} at index {i}")
 
         i += 4
 
