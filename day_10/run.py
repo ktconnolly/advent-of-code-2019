@@ -48,13 +48,13 @@ def part_two():
         if angle == 360:
             angle = 0
 
-        angles[angle].append([asteroid, get_distance(base, asteroid)])
+        angles[angle].append(asteroid)
 
     sort_by_angle = [angles[angle] for angle in sorted(angles.keys())]
 
     # sort so final asteroid in sublist is nearest
     for asteroids in sort_by_angle:
-        asteroids.sort(key=lambda item: item[1], reverse=True)
+        asteroids.sort(key=lambda item: get_distance(base, item), reverse=True)
 
     destroyed = 0
     for angle in itertools.cycle(sort_by_angle):
@@ -63,4 +63,4 @@ def part_two():
             destroyed += 1
 
             if destroyed == 200:
-                return asteroid[0].x * 100 + asteroid[0].y
+                return asteroid.x * 100 + asteroid.y
