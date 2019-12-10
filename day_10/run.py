@@ -13,7 +13,7 @@ def read(file):
 
 
 def angle(p1, p2):
-    return math.atan2(p1.y - p2.y, p1.x - p2.x)
+    return math.atan2(p1.x - p2.x, p1.y - p2.y)
 
 
 def distance(p1, p2):
