@@ -40,8 +40,6 @@ def part_two():
     base = Point(x=23, y=19)
     asteroids = read("input.txt")
     asteroids.remove(base)
-    
-    
 
     angles = defaultdict(list)
     for asteroid in asteroids:
