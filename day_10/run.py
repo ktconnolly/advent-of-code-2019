@@ -40,6 +40,8 @@ def part_two():
     base = Point(x=23, y=19)
     asteroids = read("input.txt")
     asteroids.remove(base)
+    
+    
 
     angles = defaultdict(list)
     for asteroid in asteroids:
@@ -48,7 +50,7 @@ def part_two():
         if angle == 360:
             angle = 0
 
-        angles[angle].append([asteroid])
+        angles[angle].append([asteroid, get_distance(base, asteroid)])
 
     sort_by_angle = [angles[angle] for angle in sorted(angles.keys())]
 
