@@ -8,7 +8,7 @@ def read(file):
     with open(file, "r") as f:
         return [
             Point(x, y) for y, line in enumerate(f.readlines())
-            for x, c in enumerate(line) if c == '#'
+            for x, c in enumerate(line) if c == "#"
         ]
 
 
