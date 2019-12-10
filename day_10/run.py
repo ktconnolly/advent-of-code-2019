@@ -39,18 +39,22 @@ def part_one():
 def part_two():
     base = Point(x=23, y=19)
     asteroids = read("input.txt")
-    angles = defaultdict(list)
     asteroids.remove(base)
 
+    angles = defaultdict(list)
     for asteroid in asteroids:
         angle = 360 - get_angle(base, asteroid)
 
         if angle == 360:
             angle = 0
 
-        angles[angle].append([asteroid, get_distance(base, asteroid)])
+        angles[angle].append([asteroid])
 
     sort_by_angle = [angles[angle] for angle in sorted(angles.keys())]
+
+    # sort so final asteroid in sublist is nearest
+    for asteroids in sort_by_angle:
+        asteroids.sort(key=lambda item: item[1], reverse=True)
 
     destroyed = 0
     for angle in itertools.cycle(sort_by_angle):
