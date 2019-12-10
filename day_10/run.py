@@ -54,7 +54,7 @@ def part_two():
 
     # sort so final asteroid in sublist is nearest
     for asteroids in sort_by_angle:
-        asteroids.sort(key=lambda item: get_distance(base, item), reverse=True)
+        asteroids.sort(key=lambda a: get_distance(base, a), reverse=True)
 
     destroyed = 0
     for angle in itertools.cycle(sort_by_angle):
