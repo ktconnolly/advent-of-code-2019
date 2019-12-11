@@ -1,6 +1,6 @@
 import unittest
 
-from day_7 import run
+from day_07 import run
 
 
 class TestDay7(unittest.TestCase):

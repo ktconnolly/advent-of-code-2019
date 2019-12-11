@@ -8,6 +8,10 @@ class Computer:
         self.code = code.copy()
         self.ptr = 0
         self.relative_base = 0
+        self.inputs = []
+
+    def add_input(self, val):
+        self.inputs.append(val)
 
     def get_opcode(self):
         return self.code[self.ptr] % 100
@@ -48,7 +52,7 @@ class Computer:
     def resize(self, index):
         self.code += [0 for _ in range(index - len(self.code) + 1)]
 
-    def run(self, inputs):
+    def run(self):
         while self.ptr < len(self.code):
             op = self.get_opcode()
 
@@ -62,7 +66,7 @@ class Computer:
                 self.set_param(3, self.get_param(1) * self.get_param(2))
                 self.ptr += 4
             elif op == 3:
-                self.set_param(1, inputs.pop(0))
+                self.set_param(1, self.inputs.pop(0))
                 self.ptr += 2
             elif op == 4:
                 yield self.get_param(1)
@@ -86,9 +90,11 @@ class Computer:
 
 def part_one():
     c = Computer(read("input.txt"))
-    return next(c.run([1]))
+    c.add_input(1)
+    return next(c.run())
 
 
 def part_two():
     c = Computer(read("input.txt"))
-    return next(c.run([2]))
+    c.add_input(2)
+    return next(c.run())
