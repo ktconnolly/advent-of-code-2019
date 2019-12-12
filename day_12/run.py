@@ -19,9 +19,6 @@ class Moon:
     def energy(self):
         return sum(map(abs, self.pos)) * sum(map(abs, self.vel))
 
-    def __eq__(self, other):
-        return self.__dict__ == other.__dict__
-
 
 def update(moons):
     new_moons = [copy.deepcopy(m) for m in moons]
@@ -66,14 +63,14 @@ def part_two():
     initial_positions = [[m.pos[i] for m in moons] for i in range(3)]
 
     res = [0, 0, 0]
-    count = 1
+    steps = 1
     while not all(res):
         moons = update(moons)
         poistions = [[m.pos[i] for m in moons] for i in range(3)]
-        count += 1
+        steps += 1
 
         for i in range(3):
             if poistions[i] == initial_positions[i] and not res[i]:
-                res[i] = count
+                res[i] = steps
 
     return int(lcm(lcm(res[0], res[1]), res[2]))
