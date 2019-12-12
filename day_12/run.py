@@ -6,6 +6,7 @@ def read(file):
     with open(file, "r") as f:
         return [list(map(int, re.findall(r'[-\d]+', l))) for l in f]
 
+
 class Moon:
     def __init__(self, x, y, z):
         self.pos = {"x": x, "y": y, "z": z}
