@@ -13,7 +13,7 @@ class Moon:
         self.vel = [0, 0, 0]
 
     def update_position(self):
-        for i in range(len(self.pos)):
+        for i in range(3):
             self.pos[i] += self.vel[i]
 
     def energy(self):
@@ -67,7 +67,7 @@ def part_two():
 
     res = [0, 0, 0]
     count = 1
-    while True:
+    while not all(res):
         moons = update(moons)
         poistions = [[m.pos[i] for m in moons] for i in range(3)]
         count += 1
@@ -76,5 +76,4 @@ def part_two():
             if poistions[i] == initial_positions[i] and not res[i]:
                 res[i] = count
 
-        if all(res):
-            return int(lcm(lcm(res[0], res[1]), res[2]))
+    return int(lcm(lcm(res[0], res[1]), res[2]))
