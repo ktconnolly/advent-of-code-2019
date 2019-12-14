@@ -7,10 +7,17 @@ def read(file):
 
 
 class Program:
-    def __init__(self, code, setting):
+    def __init__(self, code, inputs=None):
         self.code = code.copy()
-        self.inputs = [setting]
         self.i = 0
+
+        if inputs:
+            self.inputs = inputs
+        else:
+            self.inputs = []
+
+    def add_input(self, val):
+        self.inputs.append(val)
 
     def get_opcode(self):
         return self.code[self.i] % 100
@@ -27,9 +34,7 @@ class Program:
     def get_mode(self, n):
         return self.code[self.i] // (10 ** (1 + n)) % 10
 
-    def run(self, inputs):
-        self.inputs += inputs
-
+    def run(self):
         while self.i < len(self.code):
             op = self.get_opcode()
 
@@ -69,11 +74,12 @@ def part_one():
     outputs = []
 
     for settings in permutations(range(5)):
-        amps = [Program(code, setting) for setting in settings]
+        amps = [Program(code, inputs=[setting]) for setting in settings]
 
         output = 0
         for amp in amps:
-            output = amp.run(inputs=[output])
+            amp.add_input(output)
+            output = amp.run()
 
         outputs.append(output)
 
@@ -85,12 +91,13 @@ def part_two():
     outputs = []
 
     for settings in permutations(range(5, 10)):
-        amps = [Program(code, setting) for setting in settings]
+        amps = [Program(code, inputs=[setting]) for setting in settings]
 
         output = 0
         while output is not None:
             outputs.append(output)
             for amp in amps:
-                output = amp.run([output])
+                amp.add_input(output)
+                output = amp.run()
 
     return max(outputs)

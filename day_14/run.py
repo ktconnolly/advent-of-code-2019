@@ -28,9 +28,12 @@ def get_ore(reactions, chem="FUEL", amount=1, excess=None):
     if excess is None:
         excess = defaultdict(int)
 
-    reuse = min(amount, excess[chem])
-    amount -= reuse
-    excess[chem] -= reuse
+    if amount <= excess[chem]:
+        excess[chem] -= amount
+        amount = 0
+    else:
+        amount -= excess[chem]
+        excess[chem] = 0
 
     produced, inputs = reactions[chem]
     n = ceil(amount / produced)
