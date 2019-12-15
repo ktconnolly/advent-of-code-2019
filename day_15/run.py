@@ -39,8 +39,6 @@ def get_ship_map():
     unexplored = {}
 
     while True:
-        ship_map[pos] = SUCCESSFUL_MOVE
-
         if pos not in unexplored:
             unexplored[pos] = [1, 2, 3, 4]
 
@@ -56,6 +54,8 @@ def get_ship_map():
         status = robot.run()
 
         if status == SUCCESSFUL_MOVE:
+            ship_map[pos] = SUCCESSFUL_MOVE
+
             pos = make_move(pos, move)
 
             if not back_tracking:
