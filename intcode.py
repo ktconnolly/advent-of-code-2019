@@ -1,6 +1,6 @@
 class Computer:
     def __init__(self, code, inputs=None):
-        self.code = code.copy()
+        self.code = code.copy() + [0] * 3000
         self.ptr = 0
         self.relative_base = 0
 
@@ -43,19 +43,10 @@ class Computer:
             raise Exception("Invalid mode")
 
     def read(self, index):
-        if index > len(self.code) - 1:
-            self.resize(index)
-
         return self.code[index]
 
     def write(self, index, val):
-        if index > len(self.code) - 1:
-            self.resize(index)
-
         self.code[index] = val
-
-    def resize(self, index):
-        self.code += [0 for _ in range(index - len(self.code) + 1)]
 
     def run(self):
         while self.ptr < len(self.code):
