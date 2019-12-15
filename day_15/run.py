@@ -94,22 +94,22 @@ def part_one():
 
 
 def flood(ship_map, pos, dist=0):
-    if pos not in ship_map or ship_map[pos] == "#":
+    if ship_map.get(pos, "#") == "#":
         return dist
 
     ship_map[pos] = "#"
-    n = get_neighbours(pos)
+    n1, n2, n3, n4 = get_neighbours(pos)
 
-    return max(flood(ship_map, n[0], dist + 1),
-               flood(ship_map, n[1], dist + 1),
-               flood(ship_map, n[2], dist + 1),
-               flood(ship_map, n[3], dist + 1))
+    return max(flood(ship_map, n1, dist + 1),
+               flood(ship_map, n2, dist + 1),
+               flood(ship_map, n3, dist + 1),
+               flood(ship_map, n4, dist + 1))
 
 
 def part_two():
     ship = get_ship_map()
-    oxygen_location = None
 
+    oxygen_location = None
     for coordinate in ship:
         if ship[coordinate] == OXYGEN:
             oxygen_location = coordinate
