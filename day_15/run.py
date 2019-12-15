@@ -117,7 +117,7 @@ def get_neighbours(pos):
 def get_ship_map():
     robot = Computer(read("input.txt"))
     pos = (0, 0)
-    map = {}
+    ship_map = {}
     moves = []
 
     # contains directions (value) we haven't attempted for each
@@ -125,7 +125,7 @@ def get_ship_map():
     unexplored = {}
 
     while True:
-        map[pos] = SUCCESSFUL_MOVE
+        ship_map[pos] = SUCCESSFUL_MOVE
 
         if pos not in unexplored:
             unexplored[pos] = [1, 2, 3, 4]
@@ -148,8 +148,8 @@ def get_ship_map():
                 moves.append(move)
 
         elif status == OXYGEN:
-            map[pos] = OXYGEN
-            return map
+            ship_map[pos] = OXYGEN
+            return ship_map
 
 
 def bfs(graph, start, target):
