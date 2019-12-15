@@ -180,10 +180,9 @@ def bfs(graph, start, target):
 
 
 def part_one():
-    map = get_ship_map()
-    return len(bfs(map, start=(0, 0), target=OXYGEN))
+    ship = get_ship_map()
+    return len(bfs(ship, start=(0, 0), target=OXYGEN))
 
 
 def part_two():
     pass
-
