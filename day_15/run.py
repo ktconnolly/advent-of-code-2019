@@ -88,11 +88,9 @@ class Computer:
                 self.ptr += 2
                 return out
             elif op == 5:
-                self.ptr = self.get_param(2) if self.get_param(
-                    1) != 0 else self.ptr + 3
+                self.ptr = self.get_param(2) if self.get_param(1) != 0 else self.ptr + 3
             elif op == 6:
-                self.ptr = self.get_param(2) if self.get_param(
-                    1) == 0 else self.ptr + 3
+                self.ptr = self.get_param(2) if self.get_param(1) == 0 else self.ptr + 3
             elif op == 7:
                 self.set_param(3, int(self.get_param(1) < self.get_param(2)))
                 self.ptr += 4
