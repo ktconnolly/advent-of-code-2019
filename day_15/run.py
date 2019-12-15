@@ -54,9 +54,8 @@ def get_ship_map():
         status = robot.run()
 
         if status == SUCCESSFUL_MOVE:
-            ship_map[pos] = SUCCESSFUL_MOVE
-
             pos = make_move(pos, move)
+            ship_map[pos] = SUCCESSFUL_MOVE
 
             if not back_tracking:
                 moves.append(move)
