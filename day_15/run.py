@@ -47,22 +47,22 @@ def get_ship_map():
             move = unexplored[pos].pop()
         else:
             back_tracking = True
+
+            if not moves:  # backtracked to start
+                return ship_map
+
             prev = moves.pop()
             move = get_opposite(prev)
 
         robot.add_input(move)
         status = robot.run()
 
-        if status == SUCCESSFUL_MOVE:
+        if status in (SUCCESSFUL_MOVE, OXYGEN):
             pos = make_move(pos, move)
-            ship_map[pos] = SUCCESSFUL_MOVE
+            ship_map[pos] = status
 
             if not back_tracking:
                 moves.append(move)
-
-        elif status == OXYGEN:
-            ship_map[pos] = OXYGEN
-            return ship_map
 
 
 def bfs(graph, start, target):
@@ -74,7 +74,7 @@ def bfs(graph, start, target):
         vertex = path[-1]
 
         if graph.get(vertex) == target or vertex == target:
-            return len(path)
+            return len(path) - 1  # don't count starting position as a move
 
         if vertex in visited:
             continue
@@ -94,7 +94,7 @@ def part_one():
 
 def flood(ship_map, pos, dist=0):
     if ship_map.get(pos, "#") == "#":
-        return dist
+        return dist - 1
 
     ship_map[pos] = "#"
     n1, n2, n3, n4 = get_neighbours(pos)
