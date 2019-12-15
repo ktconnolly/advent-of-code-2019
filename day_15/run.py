@@ -65,7 +65,7 @@ def get_ship_map():
                 moves.append(move)
 
 
-def bfs(graph, start, target):
+def shortest_path(graph, start, target):
     queue = [[start]]
     visited = set()
 
@@ -89,7 +89,7 @@ def bfs(graph, start, target):
 
 def part_one():
     ship = get_ship_map()
-    return bfs(ship, start=(0, 0), target=OXYGEN)
+    return shortest_path(ship, start=(0, 0), target=OXYGEN)
 
 
 def flood(ship_map, pos, dist=0):
