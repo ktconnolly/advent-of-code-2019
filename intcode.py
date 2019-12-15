@@ -9,8 +9,8 @@ class Computer:
         else:
             self.inputs = []
 
-    def add_input(self, inp):
-        self.inputs.append(inp)
+    def add_input(self, val):
+        self.inputs.append(val)
 
     def get_opcode(self):
         return self.code[self.ptr] % 100
@@ -23,11 +23,11 @@ class Computer:
         index = self.code[self.ptr + param_num]
 
         if mode == 0:
-            return self.read(index)
+            return self.code[index]
         elif mode == 1:
             return index
         elif mode == 2:
-            return self.read(index + self.relative_base)
+            return self.code[index + self.relative_base]
         else:
             raise Exception("Invalid mode")
 
@@ -36,17 +36,11 @@ class Computer:
         index = self.code[self.ptr + param_num]
 
         if mode == 0:
-            self.write(index, val)
+            self.code[index] = val
         elif mode == 2:
-            self.write(index + self.relative_base, val)
+            self.code[index + self.relative_base] = val
         else:
             raise Exception("Invalid mode")
-
-    def read(self, index):
-        return self.code[index]
-
-    def write(self, index, val):
-        self.code[index] = val
 
     def run(self):
         while self.ptr < len(self.code):
