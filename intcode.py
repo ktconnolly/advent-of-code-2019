@@ -20,25 +20,25 @@ class Computer:
 
     def get_param(self, param_num):
         mode = self.get_mode(param_num)
-        index = self.code[self.ptr + param_num]
 
         if mode == 0:
-            return self.code[index]
+            return self.code[self.code[self.ptr + param_num]]
         elif mode == 1:
-            return index
+            return self.code[self.ptr + param_num]
         elif mode == 2:
-            return self.code[index + self.relative_base]
+            return self.code[self.code[self.ptr + param_num] + self.relative_base]
         else:
             raise Exception("Invalid mode")
 
     def set_param(self, param_num, val):
         mode = self.get_mode(param_num)
-        index = self.code[self.ptr + param_num]
 
         if mode == 0:
-            self.code[index] = val
+            self.code[self.code[self.ptr + param_num]] = val
+        elif mode == 1:
+            self.code[self.ptr + param_num] = val
         elif mode == 2:
-            self.code[index + self.relative_base] = val
+            self.code[self.code[self.ptr + param_num] + self.relative_base] = val
         else:
             raise Exception("Invalid mode")
 

@@ -55,7 +55,7 @@ def part_one():
 
 def part_two():
     computer = Computer(read("input.txt"))
-    computer.write(index=0, val=2)
+    computer.code[0] = 2
 
     game = Game()
     outputs = []
