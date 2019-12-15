@@ -165,8 +165,8 @@ def bfs(graph, start, target):
         path = queue.pop(0)
         vertex = path[-1]
 
-        if graph.get(vertex) == target:
-            return path
+        if graph.get(vertex) == target or vertex == target:
+            return len(path)
 
         if vertex in visited:
             continue
@@ -181,8 +181,15 @@ def bfs(graph, start, target):
 
 def part_one():
     ship = get_ship_map()
-    return len(bfs(ship, start=(0, 0), target=OXYGEN))
+    return bfs(ship, start=(0, 0), target=OXYGEN)
 
 
 def part_two():
-    pass
+    ship = get_ship_map()
+    oxygen_location = None
+
+    for coordinate in ship:
+        if ship[coordinate] == OXYGEN:
+            oxygen_location = coordinate
+
+    return max(bfs(ship, coordinate, oxygen_location) for coordinate in ship)
