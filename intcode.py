@@ -75,7 +75,7 @@ class Computer:
             elif op == 4:
                 out = self.get_param(1)
                 self.ptr += 2
-                return out
+                yield out
             elif op == 5:
                 self.ptr = self.get_param(2) if self.get_param(1) != 0 else self.ptr + 3
             elif op == 6:

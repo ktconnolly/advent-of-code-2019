@@ -30,8 +30,8 @@ def get_painted_panels(starting_panel):
     position = (0, 0)
 
     outputs = []
-    while (output := painter.run()) is not None:
-        outputs.append(output)
+    for out in painter.run():
+        outputs.append(out)
 
         if len(outputs) == 2:
             turn = outputs.pop()

@@ -54,7 +54,7 @@ def get_ship_map():
             move = get_opposite(prev)
 
         robot.add_input(move)
-        status = robot.run()
+        status = next(robot.run())
 
         if status == SUCCESSFUL_MOVE:
             pos = make_move(pos, move)

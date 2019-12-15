@@ -10,19 +10,17 @@ def part_one():
     c = Computer(read("input.txt"))
     c.add_input(1)
 
-    outputs = []
-    while (output := c.run()) is not None:
-        outputs.append(output)
+    for out in c.run():
+        pass
 
-    return outputs[-1]
+    return out
 
 
 def part_two():
     c = Computer(read("input.txt"))
     c.add_input(5)
 
-    outputs = []
-    while (output := c.run()) is not None:
-        outputs.append(output)
+    for out in c.run():
+        pass
 
-    return outputs[-1]
+    return out
