@@ -1,6 +1,5 @@
 from intcode import Computer
 
-
 WALL = 0
 SUCCESSFUL_MOVE = 1
 OXYGEN = 2
@@ -94,6 +93,19 @@ def part_one():
     return bfs(ship, start=(0, 0), target=OXYGEN)
 
 
+def flood(ship_map, pos, dist=0):
+    if pos not in ship_map or ship_map[pos] == "#":
+        return dist
+
+    ship_map[pos] = "#"
+    n = get_neighbours(pos)
+
+    return max(flood(ship_map, n[0], dist + 1),
+               flood(ship_map, n[1], dist + 1),
+               flood(ship_map, n[2], dist + 1),
+               flood(ship_map, n[3], dist + 1))
+
+
 def part_two():
     ship = get_ship_map()
     oxygen_location = None
@@ -102,4 +114,4 @@ def part_two():
         if ship[coordinate] == OXYGEN:
             oxygen_location = coordinate
 
-    return max(bfs(ship, coordinate, oxygen_location) for coordinate in ship)
+    return flood(ship, oxygen_location)
