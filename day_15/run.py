@@ -2,6 +2,11 @@ WALL = 0
 SUCCESSFUL_MOVE = 1
 OXYGEN = 2
 
+NORTH = 1
+SOUTH = 2
+WEST = 3
+EAST = 4
+
 
 def read(file):
     with open(file, "r") as f:
@@ -102,11 +107,11 @@ class Computer:
 
 
 def get_opposite(move):
-    return {1: 2, 2: 1, 3: 4, 4: 3}.get(move)
+    return {NORTH: SOUTH, SOUTH: NORTH, WEST: EAST, EAST: WEST}.get(move)
 
 
 def make_move(position, direction):
-    moves = {1: (0, 1), 2: (0, -1), 3: (-1, 0), 4: (1, 0)}
+    moves = {NORTH: (0, 1), SOUTH: (0, -1), WEST: (-1, 0), EAST: (1, 0)}
     return tuple(map(sum, zip(position, moves.get(direction))))
 
 
