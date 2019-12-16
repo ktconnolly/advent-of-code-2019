@@ -51,7 +51,7 @@ def lcm(a, b):
 
 
 def part_one():
-    moons = [Moon(*pos) for pos in read("input.txt")]
+    moons = [Moon(*pos) for pos in read("inputs/day_12.txt")]
     for _ in range(1000):
         moons = update(moons)
 
@@ -59,7 +59,7 @@ def part_one():
 
 
 def part_two():
-    moons = [Moon(*pos) for pos in read("input.txt")]
+    moons = [Moon(*pos) for pos in read("inputs/day_12.txt")]
     initial_positions = [[m.pos[i] for m in moons] for i in range(3)]
 
     res = [0, 0, 0]

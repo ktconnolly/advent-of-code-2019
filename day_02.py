@@ -22,12 +22,12 @@ def run_intcode(code, noun, verb):
 
 
 def part_one():
-    code = read("input.txt")
+    code = read("inputs/day_02.txt")
     return run_intcode(code, noun=12, verb=2)
 
 
 def part_two():
-    original = read("input.txt")
+    original = read("inputs/day_02.txt")
 
     for noun in range(100):
         for verb in range(100):

@@ -37,7 +37,7 @@ class Game:
 
 
 def part_one():
-    computer = Computer(read("input.txt"))
+    computer = Computer(read("inputs/day_13.txt"))
     game = Game()
     outputs = []
 
@@ -54,7 +54,7 @@ def part_one():
 
 
 def part_two():
-    computer = Computer(read("input.txt"))
+    computer = Computer(read("inputs/day_13.txt"))
     computer.code[0] = 2
 
     game = Game()

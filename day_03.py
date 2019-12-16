@@ -24,7 +24,7 @@ def get_points(wire):
     return visited
 
 
-w1, w2 = read("input.txt")
+w1, w2 = read("inputs/day_03.txt")
 
 points1 = get_points(w1)
 points2 = get_points(w2)

@@ -70,7 +70,7 @@ class Program:
 
 
 def part_one():
-    code = read("input.txt")
+    code = read("inputs/day_07.txt")
     outputs = []
 
     for settings in permutations(range(5)):
@@ -87,7 +87,7 @@ def part_one():
 
 
 def part_two():
-    code = read("input.txt")
+    code = read("inputs/day_07.txt")
     outputs = []
 
     for settings in permutations(range(5, 10)):

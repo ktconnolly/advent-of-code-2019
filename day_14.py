@@ -66,10 +66,10 @@ def maximum_fuel(reactions, available_ore):
 
 
 def part_one():
-    reactions = read("input.txt")
+    reactions = read("inputs/day_14.txt")
     return get_ore(reactions)
 
 
 def part_two():
-    reactions = read("input.txt")
+    reactions = read("inputs/day_14.txt")
     return maximum_fuel(reactions, 1000000000000)

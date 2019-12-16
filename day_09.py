@@ -7,12 +7,12 @@ def read(file):
 
 
 def part_one():
-    c = Computer(read("input.txt"))
+    c = Computer(read("inputs/day_09.txt"))
     c.add_input(1)
     return c.run()
 
 
 def part_two():
-    c = Computer(read("input.txt"))
+    c = Computer(read("inputs/day_09.txt"))
     c.add_input(2)
     return c.run()

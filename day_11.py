@@ -22,7 +22,7 @@ def make_turn(curr, turn):
 
 
 def get_painted_panels(starting_panel):
-    painter = Computer(read("input.txt"))
+    painter = Computer(read("inputs/day_11.txt"))
     painter.add_input(starting_panel)
 
     panels = defaultdict(int)

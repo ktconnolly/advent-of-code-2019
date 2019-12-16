@@ -29,7 +29,7 @@ def get_neighbours(pos):
 
 
 def get_ship_map():
-    robot = Computer(read("input.txt"))
+    robot = Computer(read("inputs/day_15.txt"))
     pos = (0, 0)
     ship_map = {}
     moves = []
