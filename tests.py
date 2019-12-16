@@ -126,10 +126,10 @@ class Tests(unittest.TestCase):
         self.assertEqual(326, day_15.part_two())
 
     def test_day_16_part_one(self):
-        self.assertEqual('30379585', day_16.part_one())
+        self.assertEqual(30379585, day_16.part_one())
 
     def test_day_16_part_two(self):
-        self.assertEqual('22808931', day_16.part_two())
+        self.assertEqual(22808931, day_16.part_two())
 
 
 if __name__ == "__main__":

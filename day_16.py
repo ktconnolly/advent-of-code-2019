@@ -32,7 +32,7 @@ def part_one():
     for _ in range(100):
         signal = phase(signal)
 
-    return "".join(str(s) for s in signal)[:8]
+    return int("".join(map(str, signal[:8])))
 
 
 def part_two():
@@ -44,4 +44,4 @@ def part_two():
     for _ in range(100):
         signal = list(accumulate(signal, lambda a, b: (a + b) % 10))
 
-    return "".join((str(i) for i in signal[::-1][:8]))
+    return int("".join(map(str, signal[::-1][:8])))
