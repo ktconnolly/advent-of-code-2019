@@ -1,4 +1,4 @@
-from itertools import cycle
+from itertools import cycle, accumulate
 
 
 def read(file):
@@ -33,3 +33,15 @@ def part_one():
         signal = phase(signal)
 
     return "".join(str(s) for s in signal)[:8]
+
+
+def part_two():
+    signal = read("inputs/day_16.txt") * 10000
+
+    offset = int(signal[:7])
+    signal = [int(i) for i in signal][offset:][::-1]
+
+    for _ in range(100):
+        signal = list(accumulate(signal, lambda a, b: (a + b) % 10))
+
+    return "".join((str(i) for i in signal[::-1][:8]))
