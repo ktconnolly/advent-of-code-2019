@@ -41,8 +41,8 @@ def part_one():
     game = Game()
     outputs = []
 
-    while (output := computer.run()) is not None:
-        outputs.append(output)
+    while not computer.finished:
+        outputs.append(computer.run())
 
         if len(outputs) == 3:
             tile = outputs.pop()
@@ -59,8 +59,8 @@ def part_two():
 
     game = Game()
     outputs = []
-    while (output := computer.run()) is not None:
-        outputs.append(output)
+    while not computer.finished:
+        outputs.append(computer.run())
 
         if len(outputs) == 3:
             tile = outputs.pop()

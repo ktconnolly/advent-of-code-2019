@@ -3,6 +3,7 @@ class Computer:
         self.code = code.copy() + [0] * 3000
         self.ptr = 0
         self.relative_base = 0
+        self.finished = False
 
         if inputs:
             self.inputs = inputs
@@ -45,6 +46,7 @@ class Computer:
     def run(self):
         while self.ptr < len(self.code):
             op = self.get_opcode()
+
             if op == 99:
                 break
 
@@ -76,3 +78,5 @@ class Computer:
                 self.ptr += 2
             else:
                 raise Exception("Invalid opcode")
+
+        self.finished = True

@@ -7,22 +7,26 @@ def read(file):
 
 
 def part_one():
-    c = Computer(read("input.txt"))
-    c.add_input(1)
+    c = Computer(read("input.txt"), inputs=[1])
 
     outputs = []
-    while (out := c.run()) is not None:
-        outputs.append(out)
+    while not c.finished:
+        output = c.run()
+
+        if output is not None:
+            outputs.append(output)
 
     return outputs[-1]
 
 
 def part_two():
-    c = Computer(read("input.txt"))
-    c.add_input(5)
+    c = Computer(read("input.txt"), inputs=[5])
 
     outputs = []
-    while (out := c.run()) is not None:
-        outputs.append(out)
+    while not c.finished:
+        output = c.run()
+
+        if output is not None:
+            outputs.append(output)
 
     return outputs[-1]
