@@ -13,12 +13,12 @@ def get_parents(child, orbits):
 
 
 def part_one():
-    orbits = {c: p for p, c in read("input.txt")}
+    orbits = {c: p for p, c in read("day_06/input.txt")}
     return sum(len(get_parents(obj, orbits)) for obj in orbits.keys())
 
 
 def part_two():
-    orbits = {c: p for p, c in read("input.txt")}
+    orbits = {c: p for p, c in read("day_06/input.txt")}
 
     you_parents = get_parents("YOU", orbits)
     santa_parents = get_parents("SAN", orbits)

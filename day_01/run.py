@@ -17,8 +17,8 @@ def get_total_fuel(mass):
 
 
 def part_one():
-    return sum(get_fuel(mass) for mass in read("input.txt"))
+    return sum(get_fuel(mass) for mass in read("day_01/input.txt"))
 
 
 def part_two():
-    return sum(get_total_fuel(mass) for mass in read("input.txt"))
+    return sum(get_total_fuel(mass) for mass in read("day_01/input.txt"))
