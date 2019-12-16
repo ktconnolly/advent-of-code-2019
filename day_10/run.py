@@ -23,7 +23,7 @@ def get_distance(p1, p2):
 
 
 def part_one():
-    asteroids = read("day_10/input.txt")
+    asteroids = read("input.txt")
     angles = defaultdict(set)
 
     for a1 in asteroids:
@@ -38,7 +38,7 @@ def part_one():
 
 def part_two():
     base = Point(x=23, y=19)
-    asteroids = read("day_10/input.txt")
+    asteroids = read("input.txt")
     asteroids.remove(base)
 
     angles = defaultdict(list)

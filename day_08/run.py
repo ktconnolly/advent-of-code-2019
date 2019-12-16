@@ -17,14 +17,14 @@ def get_colour(pixels):
 
 
 def part_one():
-    layers = read("day_08/input.txt")
+    layers = read("input.txt")
     zero_counts = {layer: layer.count("0") for layer in layers}
     min_layer = min(zero_counts, key=zero_counts.get)
     return min_layer.count("1") * min_layer.count("2")
 
 
 def part_two():
-    layers = read("day_08/input.txt")
+    layers = read("input.txt")
     colours = [get_colour(pixels) for pixels in zip(*layers)]
     return [
         "".join("#" if p == "1" else " " for p in row)

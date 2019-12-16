@@ -7,7 +7,7 @@ def read(file):
 
 
 def part_one():
-    c = Computer(read("day_05/input.txt"), inputs=[1])
+    c = Computer(read("input.txt"), inputs=[1])
 
     outputs = []
     while not c.finished:
@@ -20,7 +20,7 @@ def part_one():
 
 
 def part_two():
-    c = Computer(read("day_05/input.txt"), inputs=[5])
+    c = Computer(read("input.txt"), inputs=[5])
 
     outputs = []
     while not c.finished:
