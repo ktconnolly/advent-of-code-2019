@@ -140,6 +140,9 @@ class Tests(unittest.TestCase):
     def test_day_19_part_one(self):
         self.assertEqual(231, day_19.part_one())
 
+    def test_day_19_part_two(self):
+        self.assertEqual(9210745, day_19.part_two())
+
 
 if __name__ == "__main__":
     unittest.main()
